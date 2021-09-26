@@ -1,3 +1,5 @@
+//Received tutoring help from assigned tutor
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -24,19 +26,43 @@ function generatePassword() {
   }
   //Variable to store uppercase characters
   var upperCaseChoice = confirm('Does your password have a uppercase character?');
+  if (upperCaseChoice === true) {
+    parameters = parameters.concat(upperCase);
+  }
 
   //Variable to store numerical characters
   var numberChoice = confirm('Does your password have a numbercase character?');
+  if (numberChoice === true) {
+    parameters = parameters.concat(numberChoice);
+  }
 
   //Variable to store special characters
   var specialChoice = confirm('Does your password have a lowercase character?');
+  if (specialChoice === true) {
+    parameters = parameters.concat(specialChoice);
+  };
 
-  var generatedPassword = '';
+
+
+
+  for (var i = 0; i < generatePassword.length; i++) {
+    var possibleCharacter = getRandom(possibleCharacters);
+
+    result.push(possibleCharacter);
+  }
+
+  // Mix in at least one of each guaranteed character in the result
+  for (var i = 0; i < generatePassword.length; i++) {
+    result[i] = guaranteedCharacters[i];
+  }
+
+  
+
   //Function that generates random password
+  return generatedPassword;
+};
 
-  return generatedPassword
-}
-
+  var generatedPassword = document.querySelector("#generate");
 
 
 // Write password to the #password input
