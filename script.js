@@ -12,11 +12,11 @@ var specialCase = ["!", "@", "#", "$", "%", "^", "&", "*", "-", "_", "=", "/"];
 
 function generatePassword() {
   //Variable to store password length
-  var passwordLength = prompt('How long do you want your password to be? (Enter between 8 and 128 characters)');
+  var passwordLength = parseInt(prompt('How long do you want your password to be? (Enter between 8 and 128 characters)'));
 
   //Conditional statement to check password has at least 8 characters
   while (passwordLength < 8 || passwordLength > 128) {
-    passwordLength = prompt('How long do you want your password to be? (Enter between 8 and 128 characters)');
+    passwordLength = parseInt(prompt('How long do you want your password to be? (Enter between 8 and 128 characters)'));
   }
 
   //Variable to store lowercase characters
@@ -33,44 +33,43 @@ function generatePassword() {
   //Variable to store numerical characters
   var numberChoice = confirm('Does your password have a numbercase character?');
   if (numberChoice === true) {
-    parameters = parameters.concat(numberChoice);
+    parameters = parameters.concat(numberCase);
   }
 
   //Variable to store special characters
-  var specialChoice = confirm('Does your password have a lowercase character?');
+  var specialChoice = confirm('Does your password have a special character?');
   if (specialChoice === true) {
-    parameters = parameters.concat(specialChoice);
+    parameters = parameters.concat(specialCase);
   };
 
+var result = []
 
 
-
-  for (var i = 0; i < generatePassword.length; i++) {
-    var possibleCharacter = getRandom(possibleCharacters);
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * parameters.length);
+    var possibleCharacter = parameters[randomIndex]
 
     result.push(possibleCharacter);
   }
 
+  /*
   // Mix in at least one of each guaranteed character in the result
   for (var i = 0; i < generatePassword.length; i++) {
     result[i] = guaranteedCharacters[i];
   }
-
-  
+*/
 
   //Function that generates random password
+  var generatedPassword = result.join("");
   return generatedPassword;
 };
-
-  var generatedPassword = document.querySelector("#generate");
-
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+ console.log(password);
+ passwordText.value = password;
 
 }
 
