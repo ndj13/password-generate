@@ -1,4 +1,5 @@
 General
+
 This project is a homework assignment produced for George Washington University's Fullstack Coding Bootcamp. Primarily written in JavaScript, it is intended to function is an application that generates passwords based on the user's prefered characters, numerical, and alphabetical elements.
 
 Trilogy tutoring services were sought out to ensure successful completion of this project. 
